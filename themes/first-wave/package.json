@@ -1,0 +1,24 @@
+{
+  "name": "first-wave-block-theme",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^20.1.0",
+    "@wordpress/i18n": "^5.4.0",
+    "@wordpress/prettier-config": "^4.4.0",
+    "@wordpress/scripts": "^28.4.0",
+    "@wordpress/stylelint-config": "^22.4.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "path": "^0.12.7",
+    "prettier": "^3.3.3",
+    "stylelint": "^14.16.1",
+    "webpack-remove-empty-scripts": "^1.0.4"
+  },
+  "dependencies": {
+    "@wordpress/blocks": "^13.4.0",
+    "@wordpress/dom-ready": "^4.4.0"
+  }
+}

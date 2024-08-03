@@ -1,0 +1,11 @@
+# Ignore everything in the wp-content folder except the themes folder
+/*
+!.gitignore
+!themes/
+
+node_modules
+
+themes/*
+!themes/first-wave/
+
+.DS_Store

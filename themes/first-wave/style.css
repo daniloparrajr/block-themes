@@ -1,0 +1,33 @@
+/**
+Theme Name: First-Wave
+Theme URI: daniloparrajr.com/themes/first-wave
+Author: Danilo Parra Jr.
+Author URI:  daniloparrajr.com
+Tags: blog, portfolio, entertainment, grid-layout, one-column, two-columns, three-columns, four-columns, block-patterns, block-styles, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, rtl-language-support, style-variations, template-editing, theme-options, translation-ready, wide-blocks
+Tested up to: 6.6
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: first-wave
+
+Contriver WordPress Theme, (C) 2024 Danilo Parra Jr.
+Contriver is distributed under the terms of the GNU GPL.
+*/
+
+/* usually added on group blocks to hide overflows */
+.is-style-overflow-hidden {
+	overflow: hidden;
+}
+
+.site-header {
+	overflow: hidden;
+}
+
+.site-header-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+}
