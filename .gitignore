@@ -2,10 +2,14 @@
 /*
 !.gitignore
 !themes/
+!plugins/
 
 node_modules
 
 themes/*
 !themes/first-wave/
+
+plugins/*
+!plugins/first-wave-blocks/
 
 .DS_Store

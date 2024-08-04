@@ -15,18 +15,20 @@ Contriver WordPress Theme, (C) 2024 Danilo Parra Jr.
 Contriver is distributed under the terms of the GNU GPL.
 */
 
-/* usually added on group blocks to hide overflows */
-.is-style-overflow-hidden {
-	overflow: hidden;
-}
-
-.site-header {
-	overflow: hidden;
-}
-
 .site-header-top {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
+	z-index: 999;
+}
+
+.site-header-bottom {
+	position: relative;
+	z-index: 9999;
+	overflow: hidden;
+}
+
+body:not(.navigation-is-open) .site-header-bottom {
+	height: 0.5rem;
 }
