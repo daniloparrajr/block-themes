@@ -44,6 +44,9 @@ function register_block_styles() {
 		'core/button'     => array(
 			'button-base' => __( 'Base', 'first-wave' ),
 		),
+		'core/list'       => array(
+			'list-plain' => __( 'Plain', 'first-wave' ),
+		),
 	);
 
 	foreach ( $block_styles as $block => $styles ) {

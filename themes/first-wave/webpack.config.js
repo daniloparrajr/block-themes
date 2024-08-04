@@ -23,6 +23,11 @@ module.exports = {
 				'src/styles',
 				'core-button.scss'
 			),
+			'styles/core-list': path.resolve(
+				process.cwd(),
+				'src/styles',
+				'core-list.scss'
+			),
 			'scripts/block-variations': path.resolve(
 				process.cwd(),
 				'src/scripts',

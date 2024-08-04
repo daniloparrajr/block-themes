@@ -32,3 +32,7 @@ Contriver is distributed under the terms of the GNU GPL.
 body:not(.navigation-is-open) .site-header-bottom {
 	height: 0.5rem;
 }
+
+ul:where(.wp-block-list) > li:not(:first-child) {
+	margin-top: var(--wp--preset--spacing--small);
+}

@@ -307,6 +307,13 @@
 						}
 					}
 				}
+			},
+			"core/list": {
+				"spacing": {
+					"padding": {
+						"left": "var(--wp--preset--spacing--small)"
+					}
+				}
 			}
 		}
 	},
