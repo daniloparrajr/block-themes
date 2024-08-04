@@ -1,0 +1,11 @@
+.wp-block-button.is-style-button-base > .wp-element-button {
+  color: var(--wp--preset--color--contrast);
+  background-color: var(--wp--preset--color--base);
+  transition: background-color var(--wp--custom--transition), color var(--wp--custom--transition);
+
+  &:hover,
+  &:focus {
+    color: var(--wp--preset--color--base);
+    background-color: var(--wp--preset--color--accent);
+  }
+}

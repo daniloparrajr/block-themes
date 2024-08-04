@@ -18,6 +18,11 @@ module.exports = {
 				'src/styles',
 				'core-navigation.scss'
 			),
+			'styles/core-button': path.resolve(
+				process.cwd(),
+				'src/styles',
+				'core-button.scss'
+			),
 			'scripts/block-variations': path.resolve(
 				process.cwd(),
 				'src/scripts',

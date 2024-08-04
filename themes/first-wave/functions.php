@@ -41,6 +41,9 @@ function register_block_styles() {
 		'core/navigation' => array(
 			'navigation-grid' => __( 'Grid', 'first-wave' ),
 		),
+		'core/button'     => array(
+			'button-base' => __( 'Base', 'first-wave' ),
+		),
 	);
 
 	foreach ( $block_styles as $block => $styles ) {
