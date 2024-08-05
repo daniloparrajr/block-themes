@@ -94,3 +94,25 @@ function enqueue_custom_block_styles() {
 	}
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\enqueue_custom_block_styles' );
+
+/**
+ * Enqueue script.aculo.us.
+ *
+ * Tha callback is hooked to 'wp_enqueue_script' to ensure the script is only enqueued on the front-end.
+ */
+function register_site_scripts(): void {
+	$theme  = wp_get_theme();
+	$domain = $theme->get( 'TextDomain' );
+
+	wp_register_script(
+		$domain . '-gsap',
+		get_theme_file_uri( 'static/scripts/gsap/gsap.min.js' ),
+		array(),
+		$theme->get( 'Version' ),
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_site_scripts' );

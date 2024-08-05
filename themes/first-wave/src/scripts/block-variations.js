@@ -3,6 +3,7 @@ import {
 	registerBlockVariation,
 	unregisterBlockVariation,
 } from '@wordpress/blocks';
+
 import domReady from '@wordpress/dom-ready';
 
 /**
