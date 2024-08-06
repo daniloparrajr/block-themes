@@ -21,6 +21,7 @@
 		"@wordpress/interactivity": "^6.4.0"
 	},
 	"devDependencies": {
+		"@wordpress/dependency-extraction-webpack-plugin": "^6.4.0",
 		"@wordpress/scripts": "^27.9.0"
 	}
 }
