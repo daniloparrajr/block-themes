@@ -3,20 +3,28 @@
  */
 import { store, getContext } from "@wordpress/interactivity";
 
+import { gsap } from "gsap";
+
+const tl = gsap
+  .timeline({
+    paused: true,
+  })
+  .to(".site-header-bottom", {
+    height: "auto",
+    duration: 0.4,
+  });
+
 store("first-wave/navigation-toggle", {
   actions: {
     toggle: () => {
       const context = getContext();
       context.isOpen = !context.isOpen;
 
-      document.body.classList.toggle("navigation-is-open");
-    },
-  },
-  callbacks: {
-    logIsOpen: () => {
-      const { isOpen } = getContext();
-      // Log the value of `isOpen` each time it changes.
-      console.log(`Is open: ${isOpen}`);
+      if (context.isOpen) {
+        tl.play();
+      } else {
+        tl.reverse();
+      }
     },
   },
 });

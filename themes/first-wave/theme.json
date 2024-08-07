@@ -185,6 +185,7 @@
 		},
 		"custom": {
 			"transition": "300ms ease-in-out",
+			"siteContentRadius": "40px",
 			"fontWeight": {
 				"thin": 100,
 				"extra-light": 200,
@@ -207,6 +208,9 @@
 		}
 	},
 	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--contrast)"
+		},
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--body)",
 			"fontStyle": "normal",

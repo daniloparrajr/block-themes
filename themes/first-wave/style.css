@@ -27,12 +27,48 @@ Contriver is distributed under the terms of the GNU GPL.
 	position: relative;
 	z-index: 9999;
 	overflow: hidden;
+	height: 0.5rem;
 }
 
-body:not(.navigation-is-open) .site-header-bottom {
-	height: 0.5rem;
+.wp-site-blocks {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.site-content {
+	border-top-left-radius: var(--wp--custom--site-content-radius);
+	border-top-right-radius: var(--wp--custom--site-content-radius);
+	background-color: var(--wp--preset--color--base);
+	flex-grow: 1;
+}
+
+.site-footer {
+	background-color: var(--wp--preset--color--base);
+	margin-block-start: 0;
 }
 
 ul:where(.wp-block-list) > li:not(:first-child) {
 	margin-top: var(--wp--preset--spacing--small);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-variation-settings: "wdth" 125;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.025em;
+}
+
+h4,
+h5,
+h6 {
+	letter-spacing: 0.05em;
 }
