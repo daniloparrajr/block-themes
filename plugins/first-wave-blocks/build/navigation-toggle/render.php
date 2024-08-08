@@ -18,15 +18,18 @@ $unique_id = wp_unique_id( 'p-' );
 
 <div
 	<?php echo get_block_wrapper_attributes(); ?>
-	data-wp-interactive="first-wave/navigation-toggle"
-	<?php echo wp_interactivity_data_wp_context( array( 'isOpen' => false ) ); ?>
+	data-wp-interactive="first-wave/site-header"
 >
 	<button
 		data-wp-on--click="actions.toggle"
-		data-wp-bind--aria-expanded="context.isOpen"
+		data-wp-bind--aria-expanded="state.isOpen"
 		aria-controls="<?php echo esc_attr( $unique_id ); ?>"
 		class="wp-element-button"
 	>
-		<?php esc_html_e( 'Toggle', 'first-wave-blocks' ); ?>
+		<span class="screen-reader-text" data-wp-text="state.toggleLabel"><?php esc_html_e( 'Open Menu', 'first-wave-blocks' ); ?></span>
+		<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+			<rect x="4" y="7.5" width="16" height="1.5"></rect>
+			<rect x="4" y="15" width="16" height="1.5"></rect>
+		</svg>
 	</button>
 </div>

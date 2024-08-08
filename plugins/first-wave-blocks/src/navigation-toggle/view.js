@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext } from "@wordpress/interactivity";
+import { store } from "@wordpress/interactivity";
 
 import { gsap } from "gsap";
 
@@ -14,16 +14,21 @@ const tl = gsap
     duration: 0.4,
   });
 
-store("first-wave/navigation-toggle", {
+const { state } = store("first-wave/site-header", {
+  state: {
+    isOpen: false,
+    toggleLabel: "Open Menu",
+  },
   actions: {
     toggle: () => {
-      const context = getContext();
-      context.isOpen = !context.isOpen;
+      state.isOpen = !state.isOpen;
 
-      if (context.isOpen) {
+      if (state.isOpen) {
         tl.play();
+        state.toggleLabel = "Close Menu";
       } else {
         tl.reverse();
+        state.toggleLabel = "Open Menu";
       }
     },
   },

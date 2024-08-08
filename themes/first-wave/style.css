@@ -15,6 +15,14 @@ Contriver WordPress Theme, (C) 2024 Danilo Parra Jr.
 Contriver is distributed under the terms of the GNU GPL.
 */
 
+body {
+	background-color: var(--wp--preset--color--contrast);
+}
+
+.site-header {
+	position: relative;
+}
+
 .site-header-top {
 	position: absolute;
 	top: 0;
@@ -71,4 +79,9 @@ h4,
 h5,
 h6 {
 	letter-spacing: 0.05em;
+}
+
+.wp-element-button,
+button {
+	transition: background-color var(--wp--custom--transition), color var(--wp--custom--transition);
 }

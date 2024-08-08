@@ -5,8 +5,23 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-first-wave-first-wave-blocks {
-	font-size: 1em;
-	background: #ffff001a;
-	padding: 1em;
+.wp-block-first-wave-navigation-toggle {
+	.wp-element-button {
+		border-radius: 50%;
+		padding: 0.625rem;
+		background-color: transparent;
+		color: var(--wp--preset--color--contrast);
+
+		&:hover,
+		&:focus {
+			background-color: var(--wp--preset--color--accent);
+			color: var(--wp--preset--color--base);
+		}
+	}
+
+	svg {
+		display: block;
+		fill: currentColor;
+	}
 }
+

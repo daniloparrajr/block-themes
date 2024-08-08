@@ -77,6 +77,11 @@ function enqueue_custom_block_styles() {
 		$filename   = basename( $file, '.css' );
 		$block_name = str_replace( 'core-', 'core/', $filename );
 
+		// TODO: proper way to enqueue rtl styles for blocks.
+		if ( str_contains( $filename, '-rtl' ) ) {
+			continue;
+		}
+
 		$asset = include get_theme_file_path( "build/styles/{$filename}.asset.php" );
 
 		wp_enqueue_block_style(
@@ -89,8 +94,6 @@ function enqueue_custom_block_styles() {
 				'ver'    => $asset['version'],
 			)
 		);
-
-		// TODO: proper way to enqueue rtl styles for blocks.
 	}
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\enqueue_custom_block_styles' );
