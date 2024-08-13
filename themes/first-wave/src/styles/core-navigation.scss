@@ -20,22 +20,40 @@
   bottom: 0;
 }
 
-.wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item .wp-block-navigation-item__content {
+.wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item a:not(.wp-element-button) {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
-@media screen and (min-width: 768px) {
-  .wp-block-navigation.is-style-navigation-grid {
-    --navigation-grid-columns: 2;
+.wp-block-navigation.is-style-navigation-grid .wp-block-navigation__container {
+  width: 100%;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(var(--navigation-grid-columns), minmax(0, 1fr));
+  align-items: stretch;
+}
+
+@media screen and (max-width: 768px) {
+  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation__container {
+    margin-right: calc(var(--wp--style--root--padding-right)* -1);
+    margin-left: calc(var(--wp--style--root--padding-left)* -1);
   }
 
-  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation__container {
-    width: 100%;
-    display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-columns: repeat(var(--navigation-grid-columns), minmax(0, 1fr));
-    align-items: stretch;
+  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item a:not(.wp-element-button) {
+    padding-right: var(--wp--style--root--padding-right);
+    padding-left: var(--wp--style--root--padding-left);
+    border-top: var(--navigation-grid-border-width) solid var(--navigation-grid-border-color);
+  }
+
+  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation__container > .wp-block-navigation-item:last-child a:not(.wp-element-button) {
+    border-bottom: var(--navigation-grid-border-width) solid var(--navigation-grid-border-color);
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .wp-block-navigation.is-style-navigation-grid {
+    --navigation-grid-columns: 2;
   }
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item {
@@ -48,7 +66,6 @@
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item .wp-block-navigation-item__content {
     position: relative;
-    flex-grow: 1;
   }
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item .wp-block-navigation-item__content:after {
