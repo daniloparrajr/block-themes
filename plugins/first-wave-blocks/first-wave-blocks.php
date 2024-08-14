@@ -62,3 +62,25 @@ function site_header_template_part_attributes( string $block_content, array $blo
 	return $block_content;
 }
 add_action( 'render_block_core/template-part', __NAMESPACE__ . '\site_header_template_part_attributes', 10, 2 );
+
+
+/**
+ * Register block styles.
+ *
+ * @return void
+ */
+function register_block_styles(): void {
+	register_block_style(
+		'first-wave/navigation-toggle',
+		array(
+			'name'         => 'navigation-toggle-base',
+			'label'        => __( 'Base', 'first-wave-blocks' ),
+			'inline_style' => '
+			.wp-block-first-wave-navigation-toggle.is-style-navigation-toggle-base > .wp-element-button {
+			  color: var(--wp--preset--color--base);
+			}
+			',
+		)
+	);
+}
+add_action( 'init', __NAMESPACE__ . '\register_block_styles' );

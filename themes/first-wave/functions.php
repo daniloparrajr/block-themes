@@ -87,7 +87,7 @@ function enqueue_custom_block_styles() {
 		wp_enqueue_block_style(
 			$block_name,
 			array(
-				'handle' => "first-wave-block-{$filename}",
+				'handle' => "first-wave-theme-{$filename}",
 				'src'    => get_theme_file_uri( "build/styles/{$filename}.css" ),
 				'path'   => get_theme_file_path( "build/styles/{$filename}.css" ),
 				'deps'   => $asset['dependencies'],
