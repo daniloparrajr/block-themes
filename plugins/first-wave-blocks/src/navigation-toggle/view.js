@@ -23,7 +23,10 @@ const { state } = store("first-wave/site-header", {
     toggle: () => {
       const { ref } = getElement();
       state.isOpen = !state.isOpen;
-      console.log(ref);
+
+      const lineTop = ref.querySelector('[data-line="top"]');
+      const lineBottom = ref.querySelector('[data-line="bottom"]');
+
       if (state.isOpen) {
         tl.play();
         state.toggleLabel = "Close Menu";

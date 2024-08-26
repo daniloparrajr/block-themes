@@ -21,17 +21,18 @@ $unique_id = wp_unique_id( 'p-' );
 	data-wp-interactive="first-wave/site-header"
 >
 	<button
+		type="button"
 		data-wp-on--click="actions.toggle"
 		data-wp-bind--aria-expanded="state.isOpen"
+		data-wp-class--is-active="state.isOpen"
 		aria-controls="<?php echo esc_attr( $unique_id ); ?>"
-		class="wp-element-button"
+		class="hamburger hamburger--spring wp-element-button"
 	>
 		<span class="screen-reader-text" data-wp-text="state.toggleLabel">
 			<?php esc_html_e( 'Open Menu', 'first-wave-blocks' ); ?>
 		</span>
-		<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-			<rect x="4" y="7.5" width="16" height="1.5"></rect>
-			<rect x="4" y="15" width="16" height="1.5"></rect>
-		</svg>
+		<span class="hamburger-box">
+		    <span class="hamburger-inner"></span>
+		</span>
 	</button>
 </div>
