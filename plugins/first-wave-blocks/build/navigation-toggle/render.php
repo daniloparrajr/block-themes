@@ -24,15 +24,13 @@ $unique_id = wp_unique_id( 'p-' );
 		type="button"
 		data-wp-on--click="actions.toggle"
 		data-wp-bind--aria-expanded="state.isOpen"
-		data-wp-class--is-active="state.isOpen"
+		data-wp-class--fw-navigation-toggle-button--active="state.isOpen"
 		aria-controls="<?php echo esc_attr( $unique_id ); ?>"
-		class="hamburger hamburger--spring wp-element-button"
+		class="fw-navigation-toggle-button wp-element-button"
 	>
 		<span class="screen-reader-text" data-wp-text="state.toggleLabel">
 			<?php esc_html_e( 'Open Menu', 'first-wave-blocks' ); ?>
 		</span>
-		<span class="hamburger-box">
-		    <span class="hamburger-inner"></span>
-		</span>
+		<span class="fw-navigation-toggle-button__box"></span>
 	</button>
 </div>

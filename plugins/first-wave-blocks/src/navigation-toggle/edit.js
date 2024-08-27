@@ -30,18 +30,18 @@ export default function Edit({ attributes, setAttributes }) {
 
   return (
     <div {...blockProps}>
-      <button className="wp-element-button">
-        <svg
-          width="24"
-          height="24"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <rect x="4" y="7.5" width="16" height="1.5"></rect>
-          <rect x="4" y="15" width="16" height="1.5"></rect>
-        </svg>
+      <button
+        type="button"
+        data-wp-on--click="actions.toggle"
+        data-wp-bind--aria-expanded="state.isOpen"
+        data-wp-class--is-active="state.isOpen"
+        aria-controls="<?php echo esc_attr( $unique_id ); ?>"
+        className="fw-navigation-toggle-button wp-element-button"
+      >
+        <span className="screen-reader-text" data-wp-text="state.toggleLabel">
+          Open Menu
+        </span>
+        <span className="fw-navigation-toggle-button__box"></span>
       </button>
     </div>
   );
