@@ -75,7 +75,6 @@
     width: 50vw;
     top: 0;
     bottom: 0;
-    border-top: var(--navigation-grid-border-width) solid var(--navigation-grid-border-color);
     transition: all var(--navigation-grid-transition);
     background-color: var(--navigation-grid-item-bg-color);
     z-index: 2;
@@ -87,30 +86,38 @@
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(odd) .wp-block-navigation-item__content:after {
     right: 0;
+    border-right: var(--navigation-grid-border-width) solid var(--navigation-grid-border-color);
   }
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(even) .wp-block-navigation-item__content:after {
-    border-left: var(--navigation-grid-border-width) solid var(--navigation-grid-border-color);
     left: 0;
   }
 
-  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:last-child .wp-block-navigation-item__content:before,
-  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-last-child(2) .wp-block-navigation-item__content:before {
+  .wp-block-navigation.is-style-navigation-grid:before,
+  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(odd) .wp-block-navigation-item__content:before,
+  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(even) .wp-block-navigation-item__content:before {
     content: '';
     display: block;
     position: absolute;
     width: 50vw;
+    height: var(--navigation-grid-border-width);
     bottom: 0;
-    border-bottom: var(--navigation-grid-border-width) solid var(--navigation-grid-border-color);
+    background-color: var(--navigation-grid-border-color);
     z-index: 4;
   }
 
-  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-last-child(2) .wp-block-navigation-item__content:before {
-    right: 0;
+  .wp-block-navigation.is-style-navigation-grid:before {
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:last-child .wp-block-navigation-item__content:before {
+  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(even) .wp-block-navigation-item__content:before {
     left: 0;
+  }
+
+  .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(odd) .wp-block-navigation-item__content:before {
+    right: 0;
   }
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item__label {
