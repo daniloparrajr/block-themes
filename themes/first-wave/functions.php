@@ -16,7 +16,12 @@ namespace First_Wave;
  * @since 1.0.0
  */
 function enqueue_style_sheet(): void {
-	wp_enqueue_style( sanitize_title( __NAMESPACE__ ), get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_style(
+		sanitize_title( __NAMESPACE__ ),
+		get_template_directory_uri() . '/assets/styles/main.css',
+		array(),
+		wp_get_theme()->get( 'Version' )
+	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_style_sheet' );
 
@@ -24,10 +29,14 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_style_sheet' );
  * Add the following to a theme's functions.php file.
  */
 function enqueue_block_variations() {
+	$asset = include get_theme_file_path( 'assets/scripts/block-variations.asset.php' );
+
 	wp_enqueue_script(
 		'first-wave-enqueue-block-variations',
-		get_template_directory_uri() . '/assets/scripts/variations.js',
-		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' )
+		get_template_directory_uri() . '/assets/scripts/block-variations.js',
+		$asset['dependencies'],
+		$asset['version'],
+		array( 'strategy' => 'defer' )
 	);
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_block_variations' );
@@ -69,7 +78,7 @@ add_action( 'init', __NAMESPACE__ . '\register_block_styles' );
 function enqueue_custom_block_styles() {
 
 	// Scan our styles folder to locate block styles.
-	$files = glob( get_template_directory() . '/build/styles/*.css' );
+	$files = glob( get_template_directory() . '/assets/styles/blocks/*.css' );
 
 	foreach ( $files as $file ) {
 
@@ -77,19 +86,14 @@ function enqueue_custom_block_styles() {
 		$filename   = basename( $file, '.css' );
 		$block_name = str_replace( 'core-', 'core/', $filename );
 
-		// TODO: proper way to enqueue rtl styles for blocks.
-		if ( str_contains( $filename, '-rtl' ) ) {
-			continue;
-		}
-
-		$asset = include get_theme_file_path( "build/styles/{$filename}.asset.php" );
+		$asset = include get_theme_file_path( "assets/styles/blocks/{$filename}.asset.php" );
 
 		wp_enqueue_block_style(
 			$block_name,
 			array(
 				'handle' => "first-wave-theme-{$filename}",
-				'src'    => get_theme_file_uri( "build/styles/{$filename}.css" ),
-				'path'   => get_theme_file_path( "build/styles/{$filename}.css" ),
+				'src'    => get_theme_file_uri( "assets/styles/blocks/{$filename}.css" ),
+				'path'   => get_theme_file_path( "assets/styles/blocks/{$filename}.css" ),
 				'deps'   => $asset['dependencies'],
 				'ver'    => $asset['version'],
 			)
@@ -97,25 +101,3 @@ function enqueue_custom_block_styles() {
 	}
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\enqueue_custom_block_styles' );
-
-/**
- * Enqueue script.aculo.us.
- *
- * Tha callback is hooked to 'wp_enqueue_script' to ensure the script is only enqueued on the front-end.
- */
-function register_site_scripts(): void {
-	$theme  = wp_get_theme();
-	$domain = $theme->get( 'TextDomain' );
-
-	wp_register_script(
-		$domain . '-gsap',
-		get_theme_file_uri( 'static/scripts/gsap/gsap.min.js' ),
-		array(),
-		$theme->get( 'Version' ),
-		array(
-			'in_footer' => true,
-			'strategy'  => 'defer',
-		)
-	);
-}
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_site_scripts' );

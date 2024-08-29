@@ -1,12 +1,13 @@
 {
   "name": "first-wave-block-theme",
   "scripts": {
-    "start": "wp-scripts start",
-    "build": "wp-scripts build"
+    "start": "wp-scripts start --output-path=assets",
+    "build": "wp-scripts build --output-path=assets"
   },
   "devDependencies": {
     "@wordpress/i18n": "^5.4.0",
     "@wordpress/scripts": "^28.4.0",
+    "fast-glob": "^3.3.2",
     "path": "^0.12.7",
     "webpack-remove-empty-scripts": "^1.0.4"
   },
