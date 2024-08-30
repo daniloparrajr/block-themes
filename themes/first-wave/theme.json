@@ -39,6 +39,11 @@
 					"slug": "contrast-2"
 				},
 				{
+					"name": "Contrast / Three",
+					"slug": "contrast-3",
+					"color": "#525252"
+				},
+				{
 					"color": "#4f46e5",
 					"name": "Accent",
 					"slug": "accent"
@@ -96,9 +101,9 @@
 				{
 					"fluid": {
 						"min": "1rem",
-						"max": "1.165rem"
+						"max": "1.25rem"
 					},
-					"size": "1.165rem",
+					"size": "1.25rem",
 					"slug": "base",
 					"name": "Base"
 				},
@@ -319,6 +324,20 @@
 				"spacing": {
 					"padding": {
 						"left": "var(--wp--preset--spacing--small)"
+					}
+				}
+			},
+			"core/post-title": {
+				"elements": {
+					"link": {
+						"typography": {
+							"textDecoration": "none"
+						},
+						":hover": {
+							"color": {
+								"text": "var(--wp--preset--color--accent)"
+							}
+						}
 					}
 				}
 			}

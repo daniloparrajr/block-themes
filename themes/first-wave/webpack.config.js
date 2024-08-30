@@ -14,7 +14,7 @@ const { sync: glob } = require("fast-glob");
 
 function getStylesEntryPoints() {
   // Checks whether any block metadata files can be detected in the defined source directory.
-  const stylePaths = glob("styles/**/*.scss", {
+  const stylePaths = glob("css/**/*.scss", {
     absolute: false,
     cwd: fromProjectRoot(getWordPressSrcDirectory()),
   });
@@ -46,9 +46,9 @@ module.exports = {
   ...{
     entry: {
       ...getStylesEntryPoints(),
-      "scripts/block-variations": path.resolve(
+      "js/block-variations": path.resolve(
         process.cwd(),
-        "src/scripts",
+        "src/js",
         "block-variations.js",
       ),
     },

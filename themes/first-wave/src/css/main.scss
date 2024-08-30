@@ -53,7 +53,41 @@ h6,
   font-variation-settings: "wdth" 125;
 }
 
+a {
+  transition: color var(--wp--custom--transition);
+}
+
 .wp-element-button,
 button {
   transition: background-color var(--wp--custom--transition), color var(--wp--custom--transition);
+}
+
+.is-card {
+  overflow: hidden;
+  position: relative;
+
+  transition: background-color var(--wp--custom--transition);
+
+  &:hover {
+    background-color: var(--wp--preset--color--base-2);
+  }
+}
+
+.wp-block-post-title.is-link-parent {
+  > a {
+    &:before {
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+  }
+}
+
+.is-font-wide {
+  font-variation-settings: "wdth" 125;
 }
