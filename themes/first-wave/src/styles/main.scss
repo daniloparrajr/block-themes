@@ -53,18 +53,6 @@ h6,
   font-variation-settings: "wdth" 125;
 }
 
-h1,
-h2,
-h3 {
-  letter-spacing: -0.025em;
-}
-
-h4,
-h5,
-h6 {
-  letter-spacing: 0.05em;
-}
-
 .wp-element-button,
 button {
   transition: background-color var(--wp--custom--transition), color var(--wp--custom--transition);
