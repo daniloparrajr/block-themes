@@ -56,6 +56,9 @@ function register_block_styles() {
 		'core/list'       => array(
 			'list-plain' => __( 'Plain', 'first-wave' ),
 		),
+		'core/heading'    => array(
+			'heading-line' => __( 'Line', 'first-wave' ),
+		),
 	);
 
 	foreach ( $block_styles as $block => $styles ) {

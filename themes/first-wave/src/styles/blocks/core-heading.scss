@@ -1,0 +1,14 @@
+.wp-block-heading.is-style-heading-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &:after {
+    content: '';
+    display: block;
+    flex-grow: 1;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.2;
+  }
+}
