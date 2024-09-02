@@ -56,6 +56,7 @@
 			"writingMode": true,
 			"lineHeight": true,
 			"defaultFontSizes": false,
+			"customFontSize": false,
 			"fontFamilies": [
 				{
 					"fontFace": [
@@ -81,54 +82,55 @@
 			],
 			"fontSizes": [
 				{
-					"fluid": {
-						"min": ".825rem",
-						"max": ".95rem"
-					},
-					"size": ".95rem",
-					"slug": "x-small",
-					"name": "Extra Small"
-				},
-				{
-					"size": "1rem",
+					"fluid": false,
+					"size": "0.875rem",
 					"slug": "small",
 					"name": "Small"
 				},
 				{
-					"fluid": {
-						"min": "1rem",
-						"max": "1.25rem"
-					},
-					"size": "1.25rem",
+					"fluid": false,
+					"size": "1rem",
 					"slug": "base",
 					"name": "Base"
 				},
 				{
-					"fluid": {
-						"min": "1.365rem",
-						"max": "1.65rem"
-					},
-					"size": "1.65rem",
+					"fluid": false,
+					"size": "1.25rem",
 					"slug": "medium",
 					"name": "Medium"
 				},
 				{
-					"fluid": {
-						"min": "1.75rem",
-						"max": "2.75rem"
-					},
-					"size": "2.75rem",
+					"fluid": false,
+					"size": "1.5rem",
 					"slug": "large",
 					"name": "Large"
 				},
 				{
 					"fluid": {
-						"min": "2.425rem",
-						"max": "3.5rem"
+						"min": "1.75rem",
+						"max": "2rem"
 					},
-					"size": "3.5rem",
-					"slug": "x-large",
-					"name": "Extra Large"
+					"size": "2rem",
+					"slug": "xl",
+					"name": "XL"
+				},
+				{
+					"fluid": {
+						"min": "2rem",
+						"max": "2.5rem"
+					},
+					"size": "2.5rem",
+					"slug": "2xl",
+					"name": "XXL"
+				},
+				{
+					"fluid": {
+						"min": "3rem",
+						"max": "2.5rem"
+					},
+					"size": "3rem",
+					"slug": "3xl",
+					"name": "XXXL"
 				},
 				{
 					"fluid": {
@@ -136,8 +138,8 @@
 						"max": "4rem"
 					},
 					"size": "4rem",
-					"slug": "xx-large",
-					"name": "Extra Extra Large"
+					"slug": "4xl",
+					"name": "XXXXL"
 				}
 			]
 		},
@@ -310,7 +312,7 @@
 		"blocks": {
 			"core/site-title": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--base)",
+					"fontSize": "var(--wp--preset--font-size--medium)",
 					"fontWeight": "var(--wp--custom--font-weight--semi-bold)",
 					"lineHeight": "var(--wp--custom--line-height--none)",
 					"letterSpacing": "0"
@@ -328,6 +330,11 @@
 					"padding": {
 						"left": "var(--wp--preset--spacing--small)"
 					}
+				}
+			},
+			"core/quote": {
+				"color": {
+					"text": "var(--wp--preset--color--contrast)"
 				}
 			},
 			"core/post-title": {
