@@ -10,6 +10,8 @@
 
 namespace First_Wave;
 
+use WP_HTML_Tag_Processor;
+
 const ASSETS_DIR  = '/assets';
 const STYLES_DIR  = ASSETS_DIR . '/css';
 const SCRIPTS_DIR = ASSETS_DIR . '/js';
@@ -133,3 +135,28 @@ function enqueue_custom_block_styles(): void {
 	}
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\enqueue_custom_block_styles' );
+
+/**
+ * Make the post excerpt more link to button
+ *
+ * @param string $block_content The block content.
+ *
+ * @return string
+ */
+function post_excerpt_more_link_button( string $block_content ): string {
+	$tags = new WP_HTML_Tag_Processor( $block_content );
+
+	if (
+		$tags->next_tag(
+			array(
+				'tag_name'   => 'a',
+				'class_name' => 'wp-block-post-excerpt__more-link',
+			)
+		)
+	) {
+		$tags->add_class( 'wp-block-button__link wp-element-button' );
+	}
+
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/post-excerpt', __NAMESPACE__ . '\post_excerpt_more_link_button' );
