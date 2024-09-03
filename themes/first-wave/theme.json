@@ -144,6 +144,8 @@
 			]
 		},
 		"spacing": {
+			"defaultSpacingSizes": false,
+			"customSpacingSize": false,
 			"spacingSizes": [
 				{
 					"name": "Small",
@@ -185,8 +187,7 @@
 					"size": "clamp(7rem, 16vw, 15rem)",
 					"slug": "xxxxx-large"
 				}
-			],
-			"units": ["px", "em", "rem", "vh", "vw", "%"]
+			]
 		},
 		"custom": {
 			"transition": "300ms ease-in-out",
