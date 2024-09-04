@@ -53,8 +53,14 @@ h6,
   font-variation-settings: "wdth" 125;
 }
 
-a {
-  transition: color var(--wp--custom--transition);
+a:where(:not(.wp-element-button)) {
+  transition: all var(--wp--custom--transition);
+  text-underline-offset: 0.20em;
+
+  &:hover,
+  &:focus {
+    color: var(--wp--preset--color--accent);
+  }
 }
 
 .wp-element-button,
