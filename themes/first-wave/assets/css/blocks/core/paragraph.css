@@ -1,0 +1,1 @@
+p.is-style-paragraph-top-line{position:relative}p.is-style-paragraph-top-line:after,p.is-style-paragraph-top-line:before{background-color:var(--wp--preset--color--contrast-3);content:"";display:block;height:1px;position:absolute;top:0;width:95%}p.is-style-paragraph-top-line:before{left:0;width:4%}p.is-style-paragraph-top-line:after{opacity:.3;right:0}

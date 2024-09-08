@@ -1,0 +1,24 @@
+p.is-style-paragraph-top-line {
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    width: 95%;
+    height: 1px;
+    background-color: var(--wp--preset--color--contrast-3);
+    position: absolute;
+    top: 0;
+  }
+
+  &:before {
+    left: 0;
+    width: 4%;
+  }
+
+  &:after {
+    right: 0;
+    opacity: 0.3;
+  }
+}

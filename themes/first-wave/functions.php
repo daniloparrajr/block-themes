@@ -88,6 +88,9 @@ function register_block_styles(): void {
 		'core/post-template' => array(
 			'equal-grid-height' => __( 'Equal Grid Height', 'first-wave' ),
 		),
+		'core/paragraph'     => array(
+			'paragraph-top-line' => __( 'Top Line', 'first-wave' ),
+		),
 	);
 
 	foreach ( $block_styles as $block => $styles ) {
