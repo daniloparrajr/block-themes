@@ -145,47 +145,51 @@
 		},
 		"spacing": {
 			"defaultSpacingSizes": false,
-			"customSpacingSize": false,
 			"spacingSizes": [
 				{
+					"name": "3xs",
+					"size": "1.5rem",
+					"slug": "xxx-small"
+				},
+				{
+					"name": "2xs",
+					"size": "clamp(1.5rem, calc(1.7857vw + .6429rem), 2rem)",
+					"slug": "xx-small"
+				},
+				{
+					"name": "Extra Small",
+					"size": "clamp(1.5rem, 5.3571vw + -.0714rem, 3rem)",
+					"slug": "x-small"
+				},
+				{
 					"name": "Small",
-					"size": "clamp(.5rem, 2.5vw, 1rem)",
+					"size": "clamp(2.5rem, calc(5.3571vw + -.0714rem), 4rem)",
 					"slug": "small"
 				},
 				{
 					"name": "Medium",
-					"size": "clamp(1.5rem, 4vw, 3rem)",
+					"size": "clamp(3rem, 7.1429vw + -.4286rem, 5rem)",
 					"slug": "medium"
 				},
 				{
 					"name": "Large",
-					"size": "clamp(2rem, 5vw, 3rem)",
+					"size": "clamp(4rem, 7.1429vw + .5714rem, 6rem)",
 					"slug": "large"
 				},
 				{
 					"name": "Extra Large",
-					"size": "clamp(3rem, 7vw, 5rem)",
+					"size": "clamp(5rem, 10.7143vw + -.1429rem, 8rem)",
 					"slug": "x-large"
 				},
 				{
 					"name": "2xl",
-					"size": "clamp(4rem, 9vw, 7rem)",
+					"size": "clamp(6rem, 14.2857vw + -.8571rem, 10rem)",
 					"slug": "xx-large"
 				},
 				{
 					"name": "3xl",
-					"size": "clamp(5rem, 12vw, 9rem)",
+					"size": "clamp(6rem, 28.5714vw + -7.7143rem, 14rem)",
 					"slug": "xxx-large"
-				},
-				{
-					"name": "4xl",
-					"size": "clamp(6rem, 14vw, 13rem)",
-					"slug": "xxxx-large"
-				},
-				{
-					"name": "5xl",
-					"size": "clamp(7rem, 16vw, 15rem)",
-					"slug": "xxxxx-large"
 				}
 			]
 		},
@@ -225,12 +229,12 @@
 			"text": "var(--wp--preset--color--contrast-3)"
 		},
 		"spacing": {
-			"blockGap": "var(--wp--preset--spacing--small)",
+			"blockGap": "var(--wp--preset--spacing--xxx-small)",
 			"padding": {
 				"top": "0",
-				"right": "var(--wp--preset--spacing--medium)",
+				"right": "var(--wp--preset--spacing--xxx-small)",
 				"bottom": "0",
-				"left": "var(--wp--preset--spacing--medium)"
+				"left": "var(--wp--preset--spacing--xxx-small)"
 			}
 		},
 		"elements": {

@@ -126,10 +126,10 @@
   }
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(odd) .wp-block-navigation-item__content {
-    padding: var(--wp--preset--spacing--large) var(--wp--preset--spacing--large) var(--wp--preset--spacing--large) 0;
+    padding: var(--wp--preset--spacing--small) var(--wp--preset--spacing--small) var(--wp--preset--spacing--small) 0;
   }
 
   .wp-block-navigation.is-style-navigation-grid .wp-block-navigation-item:nth-child(even) .wp-block-navigation-item__content {
-    padding: var(--wp--preset--spacing--large) 0 var(--wp--preset--spacing--large) var(--wp--preset--spacing--large);
+    padding: var(--wp--preset--spacing--small) 0 var(--wp--preset--spacing--small) var(--wp--preset--spacing--small);
   }
 }

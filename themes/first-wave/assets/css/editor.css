@@ -1,1 +1,1 @@
-.is-text-wide,.wp-block-site-title,h1,h2,h3,h4,h5,h6{font-variation-settings:"wdth" 125}.is-text-wide{font-weight:var(--wp--custom--font-weight-normal)}
+.wp-block-site-title,h1,h2,h3,h4,h5,h6{font-variation-settings:"wdth" 125}ul:where(.wp-block-list)>li:not(:first-child){margin-top:1rem}.is-text-wide{font-variation-settings:"wdth" 125;font-weight:var(--wp--custom--font-weight-normal)}
