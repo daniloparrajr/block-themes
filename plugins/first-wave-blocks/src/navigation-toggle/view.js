@@ -3,7 +3,7 @@
  */
 import { store } from "@wordpress/interactivity";
 
-import { gsap } from "gsap";
+const gsap = window.gsap;
 
 const tl = gsap
   .timeline({

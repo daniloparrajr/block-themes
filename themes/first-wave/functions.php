@@ -15,6 +15,7 @@ use WP_HTML_Tag_Processor;
 const ASSETS_DIR  = '/assets';
 const STYLES_DIR  = ASSETS_DIR . '/css';
 const SCRIPTS_DIR = ASSETS_DIR . '/js';
+const STATIC_DIR  = '/static';
 
 /**
  * Set up additional theme supports.
@@ -32,20 +33,36 @@ function theme_setup(): void {
 add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_setup' );
 
 /**
- * Enqueue the style.css file.
+ * Enqueue Theme assets.
  *
  * @since 1.0.0
  * @return void
  */
-function enqueue_style_sheet(): void {
+function enqueue_theme_assets(): void {
 	wp_enqueue_style(
 		sanitize_title( __NAMESPACE__ ),
 		get_template_directory_uri() . STYLES_DIR . '/main.css',
 		array(),
 		wp_get_theme()->get( 'Version' )
 	);
+
+	wp_enqueue_script(
+		sanitize_title( __NAMESPACE__ . '-gsap' ),
+		get_template_directory_uri() . STATIC_DIR . '/js/gsap.min.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		array( 'strategy' => 'defer' )
+	);
+
+	wp_enqueue_script(
+		sanitize_title( __NAMESPACE__ . '-scroll-trigger' ),
+		get_template_directory_uri() . STATIC_DIR . '/js/ScrollTrigger.min.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		array( 'strategy' => 'defer' )
+	);
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_style_sheet' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_theme_assets', 9 );
 
 /**
  * Add the following to a theme's functions.php file.
