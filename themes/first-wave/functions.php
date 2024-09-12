@@ -70,13 +70,22 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_theme_assets', 9 );
  * @return void
  */
 function enqueue_block_variations(): void {
-	$asset = include get_theme_file_path( SCRIPTS_DIR . '/block-variations.asset.php' );
+	$asset  = include get_theme_file_path( SCRIPTS_DIR . '/block-variations.asset.php' );
+	$asset2 = include get_theme_file_path( SCRIPTS_DIR . '/animation-group-options.asset.php' );
 
 	wp_enqueue_script(
-		'first-wave-enqueue-block-variations',
+		'first-wave-block-variations',
 		get_template_directory_uri() . SCRIPTS_DIR . '/block-variations.js',
 		$asset['dependencies'],
 		$asset['version'],
+		array( 'strategy' => 'defer' )
+	);
+
+	wp_enqueue_script(
+		'first-wave-animation-group-options',
+		get_template_directory_uri() . SCRIPTS_DIR . '/animation-group-options.js',
+		$asset2['dependencies'],
+		$asset2['version'],
 		array( 'strategy' => 'defer' )
 	);
 }

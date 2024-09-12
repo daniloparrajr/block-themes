@@ -40,17 +40,41 @@ function getStylesEntryPoints() {
   return entryPoints;
 }
 
+function getScriptsEntryPoints() {
+  // Checks whether any block metadata files can be detected in the defined source directory.
+  const scriptPaths = glob("js/**/*.js", {
+    absolute: false,
+    cwd: fromProjectRoot(getWordPressSrcDirectory()),
+  });
+
+  let entryPoints = {};
+
+  if (scriptPaths.length > 0) {
+    for (const scriptPath of scriptPaths) {
+      let fileName = path.basename(scriptPath, path.extname(scriptPath));
+
+      entryPoints = {
+        ...entryPoints,
+        ...{
+          [path.join(path.dirname(scriptPath), fileName)]: path.resolve(
+            fromProjectRoot(getWordPressSrcDirectory()),
+            scriptPath,
+          ),
+        },
+      };
+    }
+  }
+
+  return entryPoints;
+}
+
 // Add any new entry points by extending the webpack config.
 module.exports = {
   ...defaultConfig,
   ...{
     entry: {
       ...getStylesEntryPoints(),
-      "js/block-variations": path.resolve(
-        process.cwd(),
-        "src/js",
-        "block-variations.js",
-      ),
+      ...getScriptsEntryPoints(),
     },
 
     plugins: [
