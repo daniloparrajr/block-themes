@@ -53,6 +53,7 @@ const withSidebarSelect = createHigherOrderComponent((BlockEdit) => {
             <SelectControl
               label={__("Custom Attribute")}
               value={imageAttribute}
+              size="__unstable-large"
               options={[
                 {
                   label: __("None"),
