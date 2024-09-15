@@ -8,6 +8,7 @@ import { PanelBody, SelectControl } from "@wordpress/components";
 import { InspectorControls } from "@wordpress/block-editor";
 import { Fragment } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
+import { addFilter } from "@wordpress/hooks";
 
 import classnames from "classnames";
 
@@ -26,7 +27,8 @@ const setSidebarSelectAttribute = (settings, name) => {
     }),
   });
 };
-wp.hooks.addFilter(
+
+addFilter(
   "blocks.registerBlockType",
   "custom-attributes/set-sidebar-select-attribute",
   setSidebarSelectAttribute,
@@ -77,7 +79,7 @@ const withSidebarSelect = createHigherOrderComponent((BlockEdit) => {
   };
 }, "withSidebarSelect");
 
-wp.hooks.addFilter(
+addFilter(
   "editor.BlockEdit",
   "custom-attributes/with-sidebar-select",
   withSidebarSelect,
@@ -106,7 +108,7 @@ const withSidebarSelectProp = createHigherOrderComponent((BlockListBlock) => {
   };
 }, "withSidebarSelectProp");
 
-wp.hooks.addFilter(
+addFilter(
   "editor.BlockListBlock",
   "custom-attributes/with-sidebar-select-prop",
   withSidebarSelectProp,
@@ -130,7 +132,7 @@ const saveSidebarSelectAttribute = (extraProps, blockType, attributes) => {
   return extraProps;
 };
 
-wp.hooks.addFilter(
+addFilter(
   "blocks.getSaveContent.extraProps",
   "custom-attributes/save-sidebar-select-attribute",
   saveSidebarSelectAttribute,

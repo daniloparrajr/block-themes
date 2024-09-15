@@ -5,19 +5,20 @@
     "build": "wp-scripts build --output-path=assets"
   },
   "devDependencies": {
-    "@wordpress/block-editor": "^14.2.0",
-    "@wordpress/components": "^28.7.0",
-    "@wordpress/compose": "^7.7.0",
-    "@wordpress/element": "^6.7.0",
-    "@wordpress/i18n": "^5.7.0",
-    "@wordpress/scripts": "^28.4.0",
     "fast-glob": "^3.3.2",
     "path": "^0.12.7",
     "webpack-remove-empty-scripts": "^1.0.4"
   },
   "dependencies": {
+    "@wordpress/block-editor": "^14.2.0",
     "@wordpress/blocks": "^13.4.0",
+    "@wordpress/components": "^28.7.0",
+    "@wordpress/compose": "^7.7.0",
     "@wordpress/dom-ready": "^4.4.0",
+    "@wordpress/element": "^6.7.0",
+    "@wordpress/hooks": "^4.7.0",
+    "@wordpress/i18n": "^5.7.0",
+    "@wordpress/scripts": "^28.4.0",
     "classnames": "^2.5.1"
   }
 }
