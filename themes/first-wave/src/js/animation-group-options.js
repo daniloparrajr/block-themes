@@ -4,136 +4,92 @@
 const enableSidebarSelectOnBlocks = ["core/image"];
 
 import { createHigherOrderComponent } from "@wordpress/compose";
-import { PanelBody, SelectControl } from "@wordpress/components";
+import { PanelBody, PanelRow, TextControl } from "@wordpress/components";
 import { InspectorControls } from "@wordpress/block-editor";
-import { Fragment } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { addFilter } from "@wordpress/hooks";
 
-import classnames from "classnames";
+/**
+ * How to add custom block controls
+ *
+ * 1. Register block attributes by filtering (blocks.registerBlockType) the block attributes
+ * 2.
+ */
+
+const enableAnimationGroupBlocks = [
+  "core/group",
+  "core/heading",
+  "core/paragraph",
+  "core/image",
+];
 
 /**
  * Declare our custom attribute
  */
-const setSidebarSelectAttribute = (settings, name) => {
-  // Do nothing if it's another block than our defined ones.
-  if (!enableSidebarSelectOnBlocks.includes(name)) {
+const setSidebarAnimationGroupAttribute = (settings, name) => {
+  // If current block is not allowed
+  if (!enableAnimationGroupBlocks.includes(name)) {
     return settings;
   }
 
-  return Object.assign({}, settings, {
-    attributes: Object.assign({}, settings.attributes, {
-      imageAttribute: { type: "string" },
-    }),
-  });
+  return {
+    ...settings,
+    attributes: {
+      ...settings.attributes,
+      animationGroup: {
+        type: "string",
+        default: "",
+      },
+    },
+  };
 };
 
 addFilter(
   "blocks.registerBlockType",
-  "custom-attributes/set-sidebar-select-attribute",
-  setSidebarSelectAttribute,
+  "first-wave/animation-group",
+  setSidebarAnimationGroupAttribute,
 );
 
-/**
- * Add Custom Select to Image Sidebar
- */
-const withSidebarSelect = createHigherOrderComponent((BlockEdit) => {
-  return (props) => {
-    // If current block is not allowed
-    if (!enableSidebarSelectOnBlocks.includes(props.name)) {
-      return <BlockEdit {...props} />;
-    }
-
-    const { attributes, setAttributes } = props;
-    const { imageAttribute } = attributes;
-
-    return (
-      <Fragment>
-        <BlockEdit {...props} />
-        <InspectorControls>
-          <PanelBody title={__("Image Custom Attributes")}>
-            <SelectControl
-              label={__("Custom Attribute")}
-              value={imageAttribute}
-              size="__unstable-large"
-              options={[
-                {
-                  label: __("None"),
-                  value: "",
-                },
-                {
-                  label: __("One"),
-                  value: "one",
-                },
-              ]}
-              onChange={(value) => {
-                setAttributes({
-                  imageAttribute: value,
-                });
-              }}
-            />
-          </PanelBody>
-        </InspectorControls>
-      </Fragment>
-    );
+function Edit({ attributes, setAttributes }) {
+  const setAnimationGroup = (value) => {
+    setAttributes({
+      animationGroup: value,
+    });
   };
-}, "withSidebarSelect");
 
+  return (
+    <InspectorControls>
+      <PanelBody title={__("Animation", "first-wave")}>
+        <TextControl
+          label="Group"
+          value={attributes.animationGroup}
+          onChange={setAnimationGroup}
+          __next40pxDefaultSize="true"
+          help={__(
+            "Enter the animation group you want to associate this block with.",
+            "first-wave",
+          )}
+        />
+      </PanelBody>
+    </InspectorControls>
+  );
+}
 addFilter(
   "editor.BlockEdit",
-  "custom-attributes/with-sidebar-select",
-  withSidebarSelect,
-);
+  "first-wave/animation-group",
+  createHigherOrderComponent((BlockEdit) => {
+    return (props) => {
+      // If current block is not allowed
+      if (!enableAnimationGroupBlocks.includes(props.name)) {
+        return <BlockEdit {...props} />;
+      }
 
-/**
- * Add custom class to block in Edit
- */
-const withSidebarSelectProp = createHigherOrderComponent((BlockListBlock) => {
-  return (props) => {
-    // If current block is not allowed
-    if (!enableSidebarSelectOnBlocks.includes(props.name)) {
-      return <BlockListBlock {...props} />;
-    }
-
-    const { attributes } = props;
-    const { imageAttribute } = attributes;
-
-    if (imageAttribute) {
       return (
-        <BlockListBlock {...props} className={"has-option-" + imageAttribute} />
+        <>
+          <BlockEdit {...props} />
+          <Edit {...props} />
+        </>
       );
-    } else {
-      return <BlockListBlock {...props} />;
-    }
-  };
-}, "withSidebarSelectProp");
-
-addFilter(
-  "editor.BlockListBlock",
-  "custom-attributes/with-sidebar-select-prop",
-  withSidebarSelectProp,
-);
-
-/**
- * Save our custom attribute
- */
-const saveSidebarSelectAttribute = (extraProps, blockType, attributes) => {
-  // Do nothing if it's another block than our defined ones.
-  if (enableSidebarSelectOnBlocks.includes(blockType.name)) {
-    const { imageAttribute } = attributes;
-    if (imageAttribute) {
-      extraProps.className = classnames(
-        extraProps.className,
-        "has-option-" + imageAttribute,
-      );
-    }
-  }
-
-  return extraProps;
-};
-
-addFilter(
-  "blocks.getSaveContent.extraProps",
-  "custom-attributes/save-sidebar-select-attribute",
-  saveSidebarSelectAttribute,
+    };
+  }, "withAnimationGroup"),
 );
