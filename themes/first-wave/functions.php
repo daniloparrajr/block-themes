@@ -10,8 +10,6 @@
 
 namespace First_Wave;
 
-use WP_HTML_Tag_Processor;
-
 const ASSETS_DIR  = '/assets';
 const STYLES_DIR  = ASSETS_DIR . '/css';
 const SCRIPTS_DIR = ASSETS_DIR . '/js';
@@ -39,15 +37,17 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_setup' );
  * @return void
  */
 function enqueue_theme_assets(): void {
+	$theme = wp_get_theme();
+
 	wp_enqueue_style(
-		sanitize_title( __NAMESPACE__ ),
+		$theme->get( 'TextDomain' ),
 		get_template_directory_uri() . STYLES_DIR . '/main.css',
 		array(),
 		wp_get_theme()->get( 'Version' )
 	);
 
 	wp_enqueue_script(
-		sanitize_title( __NAMESPACE__ . '-gsap' ),
+		$theme->get( 'TextDomain' ) . '-gsap',
 		get_template_directory_uri() . STATIC_DIR . '/js/gsap.min.js',
 		array(),
 		wp_get_theme()->get( 'Version' ),
@@ -55,11 +55,23 @@ function enqueue_theme_assets(): void {
 	);
 
 	wp_enqueue_script(
-		sanitize_title( __NAMESPACE__ . '-scroll-trigger' ),
+		$theme->get( 'TextDomain' ) . '-scroll-trigger',
 		get_template_directory_uri() . STATIC_DIR . '/js/ScrollTrigger.min.js',
 		array(),
 		wp_get_theme()->get( 'Version' ),
 		array( 'strategy' => 'defer' )
+	);
+
+	$site_asset = include get_theme_file_path( SCRIPTS_DIR . '/site.asset.php' );
+	wp_enqueue_script(
+		$theme->get( 'TextDomain' ) . '-site',
+		get_template_directory_uri() . SCRIPTS_DIR . '/site.js',
+		$site_asset['dependencies'],
+		$site_asset['version'],
+		array(
+			'strategy'  => 'defer',
+			'in_footer' => true,
+		)
 	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_theme_assets', 9 );
@@ -70,11 +82,12 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_theme_assets', 9 );
  * @return void
  */
 function enqueue_block_variations(): void {
+	$theme  = wp_get_theme();
 	$asset  = include get_theme_file_path( SCRIPTS_DIR . '/block-variations.asset.php' );
 	$asset2 = include get_theme_file_path( SCRIPTS_DIR . '/animation-group-options.asset.php' );
 
 	wp_enqueue_script(
-		'first-wave-block-variations',
+		$theme->get( 'TextDomain' ) . '-block-variations',
 		get_template_directory_uri() . SCRIPTS_DIR . '/block-variations.js',
 		$asset['dependencies'],
 		$asset['version'],
@@ -82,7 +95,7 @@ function enqueue_block_variations(): void {
 	);
 
 	wp_enqueue_script(
-		'first-wave-animation-group-options',
+		$theme->get( 'TextDomain' ) . '-animation-group-options',
 		get_template_directory_uri() . SCRIPTS_DIR . '/animation-group-options.js',
 		$asset2['dependencies'],
 		$asset2['version'],
@@ -139,7 +152,6 @@ add_action( 'init', __NAMESPACE__ . '\register_block_styles' );
  * @return void
  */
 function enqueue_custom_block_styles(): void {
-
 	// Scan our styles folder to locate block styles.
 	$files = glob( get_template_directory() . STYLES_DIR . '/blocks/core/*.css' );
 
@@ -154,7 +166,7 @@ function enqueue_custom_block_styles(): void {
 		wp_enqueue_block_style(
 			$block_name,
 			array(
-				'handle' => "first-wave-theme-{$filename}",
+				'handle' => "first-wave-{$filename}-block-style",
 				'src'    => get_theme_file_uri( STYLES_DIR . "/blocks/core/{$filename}.css" ),
 				'path'   => get_theme_file_path( STYLES_DIR . "/blocks/core/{$filename}.css" ),
 				'deps'   => $asset['dependencies'],
@@ -173,7 +185,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\enqueue_custom_block_styles' 
  * @return string
  */
 function post_excerpt_more_link_button( string $block_content ): string {
-	$tags = new WP_HTML_Tag_Processor( $block_content );
+	$tags = new \WP_HTML_Tag_Processor( $block_content );
 
 	if (
 		$tags->next_tag(

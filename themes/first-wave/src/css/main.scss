@@ -97,3 +97,9 @@ button {
 .is-text-wide {
   font-variation-settings: "wdth" 125;
 }
+
+
+.is-animated {
+  opacity: 0;
+  transform: translateY(42px);
+}
