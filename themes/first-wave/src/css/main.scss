@@ -99,7 +99,7 @@ button {
 }
 
 
-.is-animated {
+[data-fw-animation-group] {
   opacity: 0;
   transform: translateY(42px);
 }

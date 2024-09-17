@@ -1,10 +1,5 @@
-/* Add custom attribute to image block, in Sidebar */
-
-// Enable custom attributes on Image block
-const enableSidebarSelectOnBlocks = ["core/image"];
-
 import { createHigherOrderComponent } from "@wordpress/compose";
-import { PanelBody, PanelRow, TextControl } from "@wordpress/components";
+import { PanelBody, TextControl } from "@wordpress/components";
 import { InspectorControls } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import { addFilter } from "@wordpress/hooks";
@@ -13,14 +8,14 @@ import { addFilter } from "@wordpress/hooks";
  * How to add custom block controls
  *
  * 1. Register block attributes by filtering (blocks.registerBlockType) the block attributes
- * 2.
+ * 2. Add the new fields using the blocks.BlockEdit filter.
  */
 
 const enableAnimationGroupBlocks = [
   "core/group",
-  "core/heading",
-  "core/paragraph",
   "core/image",
+  "core/paragraph",
+  "core/heading",
 ];
 
 /**

@@ -201,3 +201,29 @@ function post_excerpt_more_link_button( string $block_content ): string {
 	return $tags->get_updated_html();
 }
 add_filter( 'render_block_core/post-excerpt', __NAMESPACE__ . '\post_excerpt_more_link_button' );
+
+function group_block_animation_group_attribute( string $block_content, array $block ): string {
+	$blocks = array(
+		'core/group'     => array( 'class_name' => 'wp-block-group' ),
+		'core/image'     => array( 'class_name' => 'wp-block-image' ),
+		'core/paragraph' => array( 'tag_name' => 'p' ),
+		'core/heading'   => array( 'class_name' => 'wp-block-heading' ),
+	);
+
+	if ( ! in_array( $block['blockName'], array_keys( $blocks ), true ) ) {
+		return $block_content;
+	}
+
+	if ( isset( $block['attrs']['animationGroup'] ) ) {
+		$group_block_content = new \WP_HTML_Tag_Processor( $block_content );
+
+		if ( $group_block_content->next_tag( $blocks[ $block['blockName'] ] ) ) {
+			$group_block_content->set_attribute( 'data-fw-animation-group', $block['attrs']['animationGroup'] );
+
+			$block_content = $group_block_content->get_updated_html();
+		}
+	}
+
+	return $block_content;
+}
+add_filter( 'render_block', __NAMESPACE__ . '\group_block_animation_group_attribute', 10, 2 );
