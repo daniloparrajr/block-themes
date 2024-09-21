@@ -17,6 +17,11 @@ const enableAnimationGroupBlocks = [
   "core/paragraph",
   "core/heading",
   "core/columns",
+  "core/post-date",
+  "core/post-title",
+  "core/post-content",
+  "core/post-featured-image",
+  "core/post-author-name",
 ];
 
 /**

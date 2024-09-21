@@ -204,11 +204,16 @@ add_filter( 'render_block_core/post-excerpt', __NAMESPACE__ . '\post_excerpt_mor
 
 function group_block_animation_group_attribute( string $block_content, array $block ): string {
 	$blocks = array(
-		'core/group'     => array( 'class_name' => 'wp-block-group' ),
-		'core/image'     => array( 'class_name' => 'wp-block-image' ),
-		'core/paragraph' => array( 'tag_name' => 'p' ),
-		'core/heading'   => array( 'class_name' => 'wp-block-heading' ),
-		'core/columns'   => array( 'class_name' => 'wp-block-columns' ),
+		'core/group'               => array( 'class_name' => 'wp-block-group' ),
+		'core/image'               => array( 'class_name' => 'wp-block-image' ),
+		'core/paragraph'           => array( 'tag_name' => 'p' ),
+		'core/heading'             => array( 'class_name' => 'wp-block-heading' ),
+		'core/columns'             => array( 'class_name' => 'wp-block-columns' ),
+		'core/post-date'           => array( 'class_name' => 'wp-block-post-date' ),
+		'core/post-title'          => array( 'class_name' => 'wp-block-post-title' ),
+		'core/post-content'        => array( 'class_name' => 'wp-block-post-content' ),
+		'core/post-featured-image' => array( 'class_name' => 'wp-block-post-featured-image' ),
+		'core/post-author-name'    => array( 'class_name' => 'wp-block-post-author-name' ),
 	);
 
 	if ( ! in_array( $block['blockName'], array_keys( $blocks ), true ) ) {
