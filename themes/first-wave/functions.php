@@ -208,6 +208,7 @@ function group_block_animation_group_attribute( string $block_content, array $bl
 		'core/image'     => array( 'class_name' => 'wp-block-image' ),
 		'core/paragraph' => array( 'tag_name' => 'p' ),
 		'core/heading'   => array( 'class_name' => 'wp-block-heading' ),
+		'core/columns'   => array( 'class_name' => 'wp-block-columns' ),
 	);
 
 	if ( ! in_array( $block['blockName'], array_keys( $blocks ), true ) ) {
@@ -218,7 +219,9 @@ function group_block_animation_group_attribute( string $block_content, array $bl
 		$group_block_content = new \WP_HTML_Tag_Processor( $block_content );
 
 		if ( $group_block_content->next_tag( $blocks[ $block['blockName'] ] ) ) {
-			$group_block_content->set_attribute( 'data-fw-animation-group', $block['attrs']['animationGroup'] );
+			$animation_group = str_replace( '{id}', get_the_ID(), $block['attrs']['animationGroup'] );
+
+			$group_block_content->set_attribute( 'data-fw-animation-group', $animation_group );
 
 			$block_content = $group_block_content->get_updated_html();
 		}

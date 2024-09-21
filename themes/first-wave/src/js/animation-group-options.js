@@ -16,6 +16,7 @@ const enableAnimationGroupBlocks = [
   "core/image",
   "core/paragraph",
   "core/heading",
+  "core/columns",
 ];
 
 /**
