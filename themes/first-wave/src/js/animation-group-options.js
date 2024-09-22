@@ -22,6 +22,7 @@ const enableAnimationGroupBlocks = [
   "core/post-content",
   "core/post-featured-image",
   "core/post-author-name",
+  "core/query-title",
 ];
 
 /**
