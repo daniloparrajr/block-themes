@@ -215,6 +215,7 @@ function group_block_animation_group_attribute( string $block_content, array $bl
 		'core/post-featured-image' => array( 'class_name' => 'wp-block-post-featured-image' ),
 		'core/post-author-name'    => array( 'class_name' => 'wp-block-post-author-name' ),
 		'core/query-title'         => array( 'class_name' => 'wp-block-post-author-name' ),
+		'core/buttons'             => array( 'class_name' => 'wp-block-buttons' ),
 	);
 
 	if ( ! in_array( $block['blockName'], array_keys( $blocks ), true ) ) {
