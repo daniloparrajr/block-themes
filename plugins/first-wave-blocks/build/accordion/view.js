@@ -1,0 +1,1 @@
+import*as t from"@wordpress/interactivity";var e={d:(t,r)=>{for(var o in r)e.o(r,o)&&!e.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:r[o]})},o:(t,e)=>Object.prototype.hasOwnProperty.call(t,e)};const r=(a={store:()=>t.store},s={},e.d(s,a),s),{state:o}=(0,r.store)("first-wave/accordion",{state:{isOpen:!1},actions:{toggle:()=>{}}});var a,s;
