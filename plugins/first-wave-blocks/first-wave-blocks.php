@@ -31,6 +31,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function block_init(): void {
 	$blocks = array(
 		'navigation-toggle',
+		'accordion',
+		'accordion/pane',
 	);
 
 	foreach ( $blocks as $block ) {

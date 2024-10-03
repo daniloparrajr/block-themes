@@ -16,8 +16,6 @@ import { registerBlockType } from "@wordpress/blocks";
 import "./style.scss";
 import "./editor.scss";
 
-import { InnerBlocks } from "@wordpress/block-editor";
-
 /**
  * Internal dependencies
  */
@@ -34,7 +32,4 @@ registerBlockType(metadata.name, {
    * @see ./edit.js
    */
   edit: Edit,
-  save: () => {
-    return <InnerBlocks.Content />;
-  },
 });
