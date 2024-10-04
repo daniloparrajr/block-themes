@@ -28,11 +28,9 @@ import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
 export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps();
 
-  const defaultBlocks = ["first-wave/pane"];
-
   return (
     <div {...blockProps}>
-      <InnerBlocks defaultBlock={defaultBlocks} directInsert />
+      <InnerBlocks />
     </div>
   );
 }
