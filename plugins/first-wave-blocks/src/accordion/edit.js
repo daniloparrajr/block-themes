@@ -4,6 +4,9 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from "@wordpress/i18n";
+import { ToolbarButton, ToolbarGroup } from "@wordpress/components";
+import { useDispatch } from "@wordpress/data";
+import { createBlock } from "@wordpress/blocks";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +14,11 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
+import {
+  useBlockProps,
+  useInnerBlocksProps,
+  BlockControls,
+} from "@wordpress/block-editor";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -25,12 +32,34 @@ import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
  *
  * @return {Element} Element to render.
  */
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit(props) {
   const blockProps = useBlockProps();
+  const innerBlocksProps = useInnerBlocksProps(blockProps, {
+    allowedBlocks: ["first-wave/pane"],
+    template: [["first-wave/pane"]],
+    defaultBlock: {
+      name: "first-wave/pane",
+    },
+    directInsert: true,
+  });
+
+  // Get the dispatch function from the context.
+  const { insertBlock } = useDispatch("core/block-editor");
+
+  const insertSlide = () => {
+    insertBlock(createBlock("first-wave/pane"), null, props.clientId);
+  };
 
   return (
-    <div {...blockProps}>
-      <InnerBlocks />
-    </div>
+    <>
+      <BlockControls>
+        <ToolbarGroup>
+          <ToolbarButton onClick={insertSlide}>
+            {__("Add Pane", "first-wave-blocks")}
+          </ToolbarButton>
+        </ToolbarGroup>
+      </BlockControls>
+      <div {...innerBlocksProps}></div>
+    </>
   );
 }
