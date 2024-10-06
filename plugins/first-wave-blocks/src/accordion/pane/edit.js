@@ -12,6 +12,10 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from "@wordpress/block-editor";
+import { BlockControls } from "@wordpress/block-editor";
+import { ToolbarButton, ToolbarGroup } from "@wordpress/components";
+import { useDispatch, useSelect } from "@wordpress/data";
+import { createBlock } from "@wordpress/blocks";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -25,8 +29,40 @@ import { useBlockProps } from "@wordpress/block-editor";
  *
  * @return {Element} Element to render.
  */
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, clientId }) {
   const blockProps = useBlockProps();
+  // Get the dispatch function from the context.
+  const { insertBlock } = useDispatch("core/block-editor");
 
-  return <div {...blockProps}>PANE!</div>;
+  // Get the block parent client ID
+  const parentBlock = useSelect((select) => {
+    let parentBlock = select("core/block-editor").getBlockParentsByBlockName(
+      clientId,
+      "first-wave/accordion",
+    );
+    parentBlock = select("core/block-editor").getBlock(parentBlock[0]);
+    return parentBlock;
+  });
+
+  // Insert a new slide block
+  const insertSlide = () => {
+    insertBlock(
+      createBlock("first-wave/pane"),
+      parentBlock.innerBlocks.length,
+      parentBlock.clientId,
+    );
+  };
+
+  return (
+    <>
+      <BlockControls>
+        <ToolbarGroup>
+          <ToolbarButton onClick={insertSlide}>
+            {__("Add Pane", "first-wave-blocks")}
+          </ToolbarButton>
+        </ToolbarGroup>
+      </BlockControls>
+      <div {...blockProps}>PANE!</div>
+    </>
+  );
 }

@@ -11,6 +11,9 @@
   "supports": {
     "interactivity": true
   },
+  "usesContext": [
+    "first-wave/accordion"
+  ],
   "parent": [
     "first-wave/accordion"
   ],

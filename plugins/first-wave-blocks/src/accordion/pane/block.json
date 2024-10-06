@@ -11,6 +11,7 @@
   "supports": {
     "interactivity": true
   },
+  "usesContext": ["first-wave/accordion"],
   "parent": ["first-wave/accordion"],
   "textdomain": "first-wave-blocks",
   "editorScript": "file:./index.js",

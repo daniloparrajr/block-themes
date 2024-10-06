@@ -22,6 +22,15 @@
       "background": true
     }
   },
+  "attributes": {
+    "isAccordion": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "providesContext": {
+    "first-wave/accordion": "isAccordion"
+  },
   "allowedBlocks": [
     "first-wave/pane"
   ],

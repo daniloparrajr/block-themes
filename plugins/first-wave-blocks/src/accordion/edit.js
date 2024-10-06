@@ -47,6 +47,7 @@ export default function Edit(props) {
   const { insertBlock } = useDispatch("core/block-editor");
 
   const insertSlide = () => {
+    // TODO: Insert the block at the end of block instead of first item.
     insertBlock(createBlock("first-wave/pane"), null, props.clientId);
   };
 
