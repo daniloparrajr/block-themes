@@ -11,8 +11,13 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
-import { BlockControls } from "@wordpress/block-editor";
+import {
+  RichText,
+  useBlockProps,
+  useInnerBlocksProps,
+  BlockControls,
+} from "@wordpress/block-editor";
+
 import { ToolbarButton, ToolbarGroup } from "@wordpress/components";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { createBlock } from "@wordpress/blocks";
@@ -31,8 +36,11 @@ import { createBlock } from "@wordpress/blocks";
  */
 export default function Edit({ attributes, setAttributes, clientId }) {
   const blockProps = useBlockProps();
+  const innerBlocksProps = useInnerBlocksProps();
+
   // Get the dispatch function from the context.
   const { insertBlock } = useDispatch("core/block-editor");
+  const { title } = attributes;
 
   // Get the block parent client ID
   const parentBlock = useSelect((select) => {
@@ -62,7 +70,20 @@ export default function Edit({ attributes, setAttributes, clientId }) {
           </ToolbarButton>
         </ToolbarGroup>
       </BlockControls>
-      <div {...blockProps}>PANE!</div>
+      <div {...blockProps}>
+        <RichText
+          className="fwb-accordion-title"
+          tagName="div"
+          placeholder={__("Add Title", "first-wave-blocks")}
+          onChange={(value) => setAttributes({ title: value })}
+          value={title}
+          keepPlaceholderOnFocus
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        />
+        <div {...innerBlocksProps} />
+      </div>
     </>
   );
 }

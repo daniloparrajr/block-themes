@@ -11,6 +11,11 @@
   "supports": {
     "interactivity": true
   },
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  },
   "usesContext": ["first-wave/accordion"],
   "parent": ["first-wave/accordion"],
   "textdomain": "first-wave-blocks",
