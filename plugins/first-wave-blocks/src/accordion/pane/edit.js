@@ -35,8 +35,13 @@ import { createBlock } from "@wordpress/blocks";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes, clientId }) {
-  const blockProps = useBlockProps();
-  const innerBlocksProps = useInnerBlocksProps();
+  const blockProps = useBlockProps({
+    className: "fwb-pane",
+  });
+
+  const innerBlocksProps = useInnerBlocksProps({
+    className: "fwb-pane__content",
+  });
 
   // Get the dispatch function from the context.
   const { insertBlock } = useDispatch("core/block-editor");
@@ -72,8 +77,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       </BlockControls>
       <div {...blockProps}>
         <RichText
-          className="fwb-accordion-title"
-          tagName="div"
+          className="fwb-pane__title"
+          tagName="h3"
           placeholder={__("Add Title", "first-wave-blocks")}
           onChange={(value) => setAttributes({ title: value })}
           value={title}

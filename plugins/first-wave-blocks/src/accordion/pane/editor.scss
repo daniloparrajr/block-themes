@@ -1,0 +1,19 @@
+.fwb-pane {
+  margin-bottom: 10px;
+
+  &__title {
+    border: 1px solid;
+    padding: 5px;
+    margin: 0;
+  }
+
+  &__content {
+    border: 1px solid;
+    padding: 5px;
+    display: none;
+  }
+
+  &.is-selected &__content {
+    display: block;
+  }
+}
