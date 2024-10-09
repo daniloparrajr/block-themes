@@ -6,7 +6,6 @@
   "title": "Pane",
   "category": "theme",
   "icon": "feedback",
-  "description": "Accordion pane",
   "example": {},
   "supports": {
     "interactivity": true

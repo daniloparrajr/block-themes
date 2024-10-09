@@ -9,6 +9,10 @@
  *
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
+
+
 ?>
 
-HELLO PANE!
+<pre><?php var_dump($attributes); ?></pre>
+<pre><?php var_dump($content); ?></pre>
+

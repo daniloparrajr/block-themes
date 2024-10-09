@@ -11,4 +11,5 @@
  */
 ?>
 
-HELLO ACCORDION!
+<pre><?php var_dump($attributes); ?></pre>
+<pre><?php var_dump($content); ?></pre>

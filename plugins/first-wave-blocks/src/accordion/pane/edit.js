@@ -80,7 +80,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
           className="fwb-pane__title"
           tagName="h3"
           placeholder={__("Add Title", "first-wave-blocks")}
-          onChange={(value) => setAttributes({ title: value })}
+          onChange={(val) => setAttributes({ title: val })}
           value={title}
           keepPlaceholderOnFocus
           onClick={(e) => {

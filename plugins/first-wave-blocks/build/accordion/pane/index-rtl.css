@@ -1,1 +1,1 @@
-.fwb-pane{margin-bottom:10px}.fwb-pane__title{border:1px solid;margin:0;padding:5px}.fwb-pane__content{border:1px solid;display:none;padding:5px}.fwb-pane.is-selected .fwb-pane__content{display:block}
+.fwb-pane{margin-bottom:10px}.fwb-pane__title{margin:0}.fwb-pane__content,.fwb-pane__title{border:1px solid;padding:5px}
