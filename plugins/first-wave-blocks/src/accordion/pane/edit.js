@@ -79,6 +79,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         <RichText
           className="fwb-pane__title"
           tagName="h3"
+          allowedFormats={[]}
           placeholder={__("Add Title", "first-wave-blocks")}
           onChange={(val) => setAttributes({ title: val })}
           value={title}

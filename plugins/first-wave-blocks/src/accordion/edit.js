@@ -36,7 +36,7 @@ export default function Edit(props) {
   const blockProps = useBlockProps();
   const innerBlocksProps = useInnerBlocksProps(blockProps, {
     allowedBlocks: ["first-wave/pane"],
-    template: [["first-wave/pane"]],
+    template: [["first-wave/pane"], ["first-wave/pane"]],
     defaultBlock: {
       name: "first-wave/pane",
     },

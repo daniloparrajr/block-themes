@@ -30,6 +30,17 @@ import metadata from "./block.json";
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
 registerBlockType(metadata.name, {
+  __experimentalLabel(attributes, { context }) {
+    const { title } = attributes;
+
+    const customName = attributes?.metadata?.name;
+
+    // In the list view, use the block's content as the label.
+    // If the content is empty, fall back to the default label.
+    if (context === "list-view" && (customName || title)) {
+      return attributes?.metadata?.name || title;
+    }
+  },
   /**
    * @see ./edit.js
    */
