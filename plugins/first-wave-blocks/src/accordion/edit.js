@@ -32,7 +32,7 @@ import {
  *
  * @return {Element} Element to render.
  */
-export default function Edit(props) {
+export default function Edit({ clientId, attributes, setAttributes }) {
   const blockProps = useBlockProps();
   const innerBlocksProps = useInnerBlocksProps(blockProps, {
     allowedBlocks: ["first-wave/pane"],
@@ -48,8 +48,10 @@ export default function Edit(props) {
 
   const insertSlide = () => {
     // TODO: Insert the block at the end of block instead of first item.
-    insertBlock(createBlock("first-wave/pane"), null, props.clientId);
+    insertBlock(createBlock("first-wave/pane"), null, clientId);
   };
+
+  setAttributes({ uniqueId: clientId });
 
   return (
     <>

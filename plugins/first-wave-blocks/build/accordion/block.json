@@ -23,13 +23,12 @@
     }
   },
   "attributes": {
-    "isAccordion": {
-      "type": "boolean",
-      "default": true
+    "uniqueId": {
+      "type": "string"
     }
   },
   "providesContext": {
-    "first-wave/accordion": "isAccordion"
+    "first-wave/accordion": "uniqueId"
   },
   "allowedBlocks": [
     "first-wave/pane"

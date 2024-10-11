@@ -5,4 +5,8 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-first-wave-accordion {}
+.wp-block-first-wave-accordion {
+  > .wp-block-first-wave-pane:last-child {
+    border-bottom: none;
+  }
+}

@@ -11,5 +11,6 @@
  */
 ?>
 
-<pre><?php var_dump($attributes); ?></pre>
-<pre><?php var_dump($content); ?></pre>
+<div <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
+	<?php echo $content; ?>
+</div>

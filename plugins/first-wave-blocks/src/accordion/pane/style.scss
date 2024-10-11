@@ -5,4 +5,19 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-first-wave-pane {}
+.fwb-pane {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(229, 231, 235);
+
+  &__title {
+    list-style: none;
+  }
+
+  [open] &__title {
+    color: red;
+  }
+
+  &__content > *:last-child {
+    margin-bottom: 0;
+  }
+}

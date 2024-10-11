@@ -75,10 +75,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
           </ToolbarButton>
         </ToolbarGroup>
       </BlockControls>
-      <div {...blockProps}>
+      <details {...blockProps}>
         <RichText
           className="fwb-pane__title"
-          tagName="h3"
+          tagName="summary"
           allowedFormats={[]}
           placeholder={__("Add Title", "first-wave-blocks")}
           onChange={(val) => setAttributes({ title: val })}
@@ -89,7 +89,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
           }}
         />
         <div {...innerBlocksProps} />
-      </div>
+      </details>
     </>
   );
 }
